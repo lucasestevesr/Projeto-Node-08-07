@@ -1,7 +1,8 @@
 import { Router, Request, Response, NextFunction } from "express"
+import UserApi from "./routers/user.routers"
 
 const router = Router()
-router.get('/teste',(req: Request, res: Response, next: NextFunction) => {
-    console.log('qq coisa')
-})
+
+router.use('/v1', UserApi)
+
 export default router

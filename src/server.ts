@@ -1,6 +1,7 @@
 import express from "express" 
 import cors from "cors"
 import router from "./routers"
+import errorMiddleware from "./middlewares/error.middleware"
 
 export class App {
     private express: express.Application
@@ -18,7 +19,8 @@ export class App {
         this.express.use(express.json())
         this.express.use(cors())
         this.express.use(router)
-    }
+        this.express.use(errorMiddleware)
+    }    
 
     private listen(): void {
         this.express.listen(this.port, () => {
